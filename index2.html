@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--  Bootstrap import -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Násobilka</title>
+    <style>
+      body{                                                                     /*Změna pozadí*/
+        background-color: #181a1b;
+      }
+      #stranka{                                                                 /* Zarovnání textu na střed a malé posunutí celého obsahu*/
+          text-align:center;
+          margin: 2%;
+          color: #fff;
+      }
+      h1{                                                                       /*Posunutí nadpisu*/
+      margin-bottom:2%;
+      }
+      p{                                                                        /*posunutí textu v buňce a změna velikosti testu*/
+      margin-top:8%;
+      font-size: medium;
+      }
+      th{                                                                       /*table header design*/
+        background-color: #24292e;
+        font-weight: 800;
+      }
+
+    </style>
+  </head>
+  <body>
+    
+    <div id="stranka">                                                         <!--  Kontejner pro obsah -->
+    <h1><strong>Malá násobilka</strong></h1>
+    <table class="table table-dark table-bordered" id="tabulka"></table>    <!--  připravení tabulky pro javascript -->
+    </div>                                                                     <!--  Konec kontejneru -->
+
+ <script type="text/javascript">                                               //začátek javaScriptu
+    const tabulka = document.getElementById("tabulka");                        //založení konstanty pro tabulku, ke které se připojí řádky a sloupce
+    
+    for (i = 1; i <=10; i++) {                                                 //Vnější smyčka - řádky
+    var radek = document.createElement("tr");                                  //vytvořím pomocí proměnné řádek tabulky
+        for (j = 1; j <= 10; j++) {                                            //Vnitřní smyčka - sloupce
+        if (j == 1 || i==1) {                                                  //Designové rozhodování pro boostrapový table header, kde všechny první číslice budou tučné
+          var sloupec = document.createElement("th");                          //vytvořím pomocí proměnné table header - tučný text
+        } else{
+          var sloupec = document.createElement("td");                          //vytvořím pomocí proměnné table data - obyčejný text
+          }                                                                    //Konec if
+          sloupec.innerHTML = '<p id="cislo">' + " " + i*j + "</p>";           //změna dat v sloupci na číslo které patří do malé násobilky, kde pro jedno 'i' je 10 'j' a výsledek=i*j
+          if (i%2 ==0 && j !=1){                                               //designový if pro pruhovanou tabulku
+            sloupec.style.backgroundColor = "#393f45";                         //změna barvy sloupce
+          }
+          radek.appendChild(sloupec);                                          //přiřadím sloupec řádku
+        }                                                                      //Konec vnitřní smyčky - sloupce
+        tabulka.appendChild(radek);                                            //přiřadím řádek tabulce
+    }                                                                          //Konec vnější smyčky - řádky
+  </script>                                                                    <!-- Konec javaScriptu-->
+  </body>
+</html>

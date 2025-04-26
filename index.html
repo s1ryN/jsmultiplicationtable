@@ -1,0 +1,58 @@
+<!-- Určení typu dokumentu -->
+<!DOCTYPE html>
+<!-- Nastavení jazyka -->
+<html lang="cs">
+<head>
+    <!-- Nastavení charsetu na UTF-8 -->
+    <meta charset="UTF-8">
+    <!-- Viewport pro responsivní design -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link na Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Nastavení titulu stránky-->
+    <title>Malá násobilka</title>
+</head>
+
+<body class="bg-light">
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Malá násobilka</h2>
+        <!-- Určení tabulky -->
+        <div class="table-responsive">
+            <table id="multiplicationTable" class="table table-bordered table-striped text-center"></table>
+        </div>
+    </div>
+
+    <script>
+        // Funkce pro násobilku
+        function createMultiplicationTable() {
+            // Vytvoření konstanty table pro HTML element "multiplicationTable"
+            const table = document.getElementById('multiplicationTable');
+
+            // Vytvoření hlavičky sloupců v první řádku
+            let headerRow = '<tr><th></th>';
+            // For loop pro vytvoření 10 sloupců
+            for (let i = 1; i <= 10; i++) {
+                headerRow += `<th>${i}</th>`;
+            }
+            headerRow += '</tr>'; // Uzavření řádku
+            table.innerHTML += headerRow; // Přidání řádku do tabulky
+
+            // For loop pro vytvoření 10 řádků
+            for (let i = 1; i <= 10; i++) {
+                let row = `<tr><th>${i}</th>`;  // Začátek řádku
+
+                // Vnitřní for loop pro vytvoření násobilky
+                for (let j = 1; j <= 10; j++) {
+                    row += `<td>${i * j}</td>`;  // Výpočet a výpis výsledku násobení
+                }
+
+                row += '</tr>';  // Uzavření řádku
+                table.innerHTML += row;  // Přidání řádku do tabulky
+            }
+        }
+
+        // Po načtení stránky se zavolá funkce 
+        createMultiplicationTable();
+    </script>
+</body>
+</html>
